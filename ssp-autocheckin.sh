@@ -46,6 +46,10 @@ checkin_text="[${date}] ${checkin_status}"
 
 echo ${checkin_text}
 
+if [ "${checkin_status}" == '"您似乎已经签到过了..."' ]; then
+  exit 1
+fi
+
 date=$(date '+%Y-%m-%d %H:%M:%S')
 if [ "${PUSH_KEY}" == "" ]; then
     push_status='"未配置推送 PUSH_KEY"'
